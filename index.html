@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minimal Weather</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="logo">⛅</span>
+      <h1>Minimal Weather</h1>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search city (e.g., London, Bengaluru)…"
+          autocomplete="off"
+          aria-autocomplete="list"
+          aria-controls="suggestions"
+          aria-expanded="false"
+          role="combobox"
+        />
+        <ul id="suggestions" class="suggestions" role="listbox" aria-label="City suggestions"></ul>
+      </div>
+
+      <button id="geoBtn" class="btn" title="Use my location" aria-label="Use my location">
+        📍
+      </button>
+
+      <div class="toggle-wrap" title="Units">
+        <label class="switch">
+          <input id="unitToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <span id="unitLabel" class="unit-label">°C</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="statusBar" class="status" role="status" aria-live="polite"></section>
+
+    <section id="locationBar" class="location-bar">
+      <h2 id="placeName">—</h2>
+      <p id="coords" class="coords">—</p>
+      <p id="updated" class="updated">—</p>
+    </section>
+
+    <section id="current" class="card current">
+      <div class="current-main">
+        <div class="current-icon" id="currentIcon" aria-hidden="true">⛅</div>
+        <div>
+          <div class="temp-row">
+            <span id="currentTemp" class="temp">—</span>
+            <span id="unitInline" class="unit-inline">°C</span>
+          </div>
+          <div id="currentDesc" class="desc">—</div>
+        </div>
+      </div>
+      <div class="current-meta">
+        <div><span>Feels</span><strong id="feelsLike">—</strong></div>
+        <div><span>Humidity</span><strong id="humidity">—</strong></div>
+        <div><span>Wind</span><strong id="wind">—</strong></div>
+        <div><span>Precip</span><strong id="precip">—</strong></div>
+      </div>
+    </section>
+
+    <section class="card forecast">
+      <h3>7-Day Forecast</h3>
+      <div id="forecastGrid" class="forecast-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>
+      Data: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>.
+      Geocoding: Open-Meteo Geocoding. No API key required.
+    </small>
+  </footer>
+
+  <template id="forecastItemTemplate">
+    <div class="day">
+      <div class="day-name">Mon</div>
+      <div class="day-icon" aria-hidden="true">⛅</div>
+      <div class="day-temps">
+        <span class="tmax">—</span>
+        <span class="tmin">—</span>
+      </div>
+      <div class="day-extra">—</div>
+    </div>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
